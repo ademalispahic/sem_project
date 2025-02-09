@@ -1,10 +1,16 @@
+import random
+
 def main():
     print("Vier Gewinnt - Start!")
+    game_mode = input("Möchten Sie gegen den Computer spielen? (y/n): ").lower()
     board = initialize_board()
     current_player = 1  # Spieler 1 beginnt
     while True:
         print_board(board)
-        column = get_move(current_player)
+        if current_player == 1 or game_mode == 'n':
+            column = get_move(current_player)
+        else:
+            column = get_computer_move(board)
         make_move(board, column, current_player)
         if check_winner(board, current_player):
             print(f"Spieler {current_player} hat gewonnen!")
@@ -24,6 +30,10 @@ def print_board(board):
 def get_move(player):
     column = int(input(f"Spieler {player}, wähle eine Spalte (0-6): "))
     return column
+
+def get_computer_move(board):
+    valid_columns = [col for col in range(7) if board[0][col] == 0]
+    return random.choice(valid_columns)
 
 def make_move(board, column, player):
     for row in range(5, -1, -1):  # Start bei der letzten Reihe
