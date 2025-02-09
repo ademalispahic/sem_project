@@ -13,9 +13,11 @@ def main():
             column = get_computer_move(board)
         make_move(board, column, current_player)
         if check_winner(board, current_player):
+            print_board(board)
             print(f"Spieler {current_player} hat gewonnen!")
             break
         if check_draw(board):
+            print_board(board)
             print("Unentschieden!")
             break
         current_player = 3 - current_player  # Wechsel zum anderen Spieler
@@ -25,10 +27,16 @@ def initialize_board():
 
 def print_board(board):
     for row in board:
-        print(" ".join(str(cell) for cell in row))
+        print(" ".join(str(cell) if cell != 0 else "." for cell in row))
+    print()
 
 def get_move(player):
-    column = int(input(f"Spieler {player}, wähle eine Spalte (0-6): "))
+    column = -1
+    while column < 0 or column > 6:
+        try:
+            column = int(input(f"Spieler {player}, wähle eine Spalte (0-6): "))
+        except ValueError:
+            pass
     return column
 
 def get_computer_move(board):
@@ -42,7 +50,6 @@ def make_move(board, column, player):
             break
 
 def check_winner(board, player):
-    # Waagrechte, senkrechte und diagonale Überprüfung
     for row in range(6):
         for col in range(4):
             if all(board[row][col + i] == player for i in range(4)):
@@ -64,4 +71,3 @@ def check_draw(board):
 
 if __name__ == "__main__":
     main()
-
