@@ -12,3 +12,5 @@ Spielanleitung:
 4. Das Spiel endet, wenn eie 4er Kombination vorliegt, oder das ganze spielfeld voll ist.
 
 Folgende Packages müssen installiert werden: random, math
+
+Die gesamte Dokumentation befidet sich im Issues Bereich :)
