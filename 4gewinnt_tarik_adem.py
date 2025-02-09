@@ -9,7 +9,7 @@ def main():
         if check_winner(board, current_player):
             print(f"Spieler {current_player} hat gewonnen!")
             break
-        current_player = 3 - current_player  # Wechsel zum anderen Spieler
+        current_player = 3 - current_player  # Spielerwechsel
 
 def initialize_board():
     return [[0 for _ in range(7)] for _ in range(6)]
@@ -29,8 +29,27 @@ def make_move(board, column, player):
             break
 
 def check_winner(board, player):
-    # Überprüfen Sie waagrechte, senkrechte und diagonale Gewinnbedingungen
-    return False  # Placeholder für Gewinnüberprüfung
+    # Waagrechte Gewinnüberprüfung
+    for row in range(6):
+        for col in range(4):
+            if all(board[row][col + i] == player for i in range(4)):
+                return True
+
+    # Senkrechte Gewinnüberprüfung
+    for row in range(3):
+        for col in range(7):
+            if all(board[row + i][col] == player for i in range(4)):
+                return True
+
+    # Diagonale Gewinnüberprüfung
+    for row in range(3):
+        for col in range(4):
+            if all(board[row + i][col + i] == player for i in range(4)):
+                return True
+            if all(board[row + 3 - i][col + i] == player for i in range(4)):
+                return True
+
+    return False
 
 if __name__ == "__main__":
     main()
