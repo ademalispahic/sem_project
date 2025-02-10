@@ -7,11 +7,7 @@ Man muss mit wohl überlegten Spielzügen 4 Symbole (X oder O) miteinander verbi
 
 Spielanleitung:
 1. Der Code muss gerunnt werden, um das Spiel zu starten.
-2. Beim Start wird gefragt,
-      wie viele Reihen man haben will (x+enter)
-      wie viele Spalten man haben will (x+enter)
-      welche kombinnation man braucht, um zu gewinnen (x+enter)
-      ob man gegen dem Computer (1+enter) oder in einem 1v1 Modus (0+enter) spielen will.
+2. Beim Start wird gefragt, ob man gegen dem Computer (Ja + enter) oder in einem 1v1 Modus (Nein + enter) spielen will.
 5. Die zwei Spieler wecheln sich ab.
 6. Das Spiel endet, wenn eie 4er Kombination vorliegt, oder das ganze spielfeld voll ist.
 
